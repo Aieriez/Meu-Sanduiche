@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -58,10 +59,8 @@ public class GameManager : MonoBehaviour
     {
         if(selectedCount == 3)
         {   
-            for (int i = 0; i < recipe.Length; i++)
-            {
-                checkIngredients = ingredients[i] == recipe[i];    
-            }
+            checkIngredients = Enumerable.SequenceEqual<string>(ingredients, recipe);
+
             if(checkIngredients)
             {
                 pts += 100;
@@ -101,6 +100,11 @@ public class GameManager : MonoBehaviour
             
         ingredients.Clear();
         ChooseRandomSandwich();
+    }
+
+    public bool EqualityOperator(string[] firstArray, string[] secondArray)
+    {
+        return firstArray == secondArray;
     }
 
 }

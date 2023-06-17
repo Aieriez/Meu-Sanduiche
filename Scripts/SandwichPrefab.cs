@@ -6,6 +6,11 @@ public class SandwichPrefab : MonoBehaviour
     [SerializeField] SpriteRenderer[] sandwichesIngredients;
     [SerializeField] string[] recipe;
     public SandwichData sandwichData;
+
+    void Awake() 
+    {
+        sandwichesIngredients = GetComponentsInChildren<SpriteRenderer>();    
+    }
     
     public void AssembleSandwich()
     {
